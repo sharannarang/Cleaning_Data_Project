@@ -14,20 +14,49 @@ run_Analysis <- function() {
     ## Read activity labels from data
     activity_labels <- read.table(file = paste(directory, "activity_labels.txt", sep="/"))
     
-    ## Read x_train,y_train and subject data
+    feature_info <- read.table(file = paste(directory, "features.txt", sep="/"))
+    
+    ## Read training dataset
     x_train <- read.table(file = paste(directory, "train", "X_train.txt", sep="/"))
-    y_train <- read.table(file = paste(directory, "train", "Y_train.txt", sep="/"))
+    y_train <- read.table(file = paste(directory, "train", "y_train.txt", sep="/"))
     sub_train <- read.table(file = paste(directory, "train", "subject_train.txt", sep="/"))    
     
+    train_df <- create_data_frame(x_train,y_train,sub_train,activity_labels,feature_info)
+    
+    print("Created training dataset...")
+
+    ## Read test dataset
+    x_test <- read.table(file = paste(directory, "test", "X_test.txt", sep="/"))
+    y_test <- read.table(file = paste(directory, "test", "y_test.txt", sep="/"))
+    sub_test <- read.table(file = paste(directory, "test", "subject_test.txt", sep="/"))        
+    
+    test_df <- create_data_frame(x_test,y_test,sub_test,activity_labels, feature_info)
+    
+    print("Created test dataset...")
+    
+    ## Merge the two datasets based on rows
+    merge_df <- rbind(test_df,train_df)
+    merge_df
 }
 
 ## Function to create data frame
-create_data_frame <- function(x,y,subject,activity_lvl) {
+create_data_frame <- function(x,y,subject,activity_lvl, features) {
+    ## create new dataset starting with subject information
     df <- data.frame(subject)
+    
+    ## Add a column for activity
     df <- cbind(df,y)
-    names(df) <- c("Subject_Id", "Activity")
+    
+    ## Merge columns from feature dataset
+    df <- cbind(df,x)
+
+    ## Add column names for first two columns and features
+    names(df) <- c("Subject_Id", "Activity", as.character(features[,2]))
+    
+    ## Convert Activity column to a factor and add descriptive levels
     df$Activity <- as.factor(df$Activity)
     levels(df$Activity) <- activity_lvl[,2]
-    #df <- cbind(df,x)
+    
+    ## Return final data frame
     df
 }
