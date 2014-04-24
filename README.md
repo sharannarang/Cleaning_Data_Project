@@ -12,7 +12,7 @@ The files are organized as follows:
 
 + run\_analysis.R: Present in the main/ directory.
 + README.md: Present in the root directory.
-+ Codebook.md: Present in the main directory.
++ Codebook.md: Present in the main/ directory.
 
 
 ## Requirements:

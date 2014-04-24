@@ -58,7 +58,7 @@ run_analysis <- function() {
     average_values_df <- dcast(molten_mean_std_df,activity + subject ~ variable, mean)
     
     print("Generated tidy data set with average values based on subject and activity...")
-    write.table(average_values_df, file="working/tidy_data.txt")
+    write.table(average_values_df, file="working/tidy_data.txt", row.names=FALSE)
     invisible(average_values_df)
 }
 
