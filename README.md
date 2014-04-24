@@ -22,7 +22,7 @@ run\_analysis.R has the following requirements:
 1. The raw data set (getdata-projectfiles-UCI HAR Dataset.zip) should be downloaded and saved in the main/ directory. The raw data can be downloaded from [here](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip).
 2. The run\_analysis.R script requires the reshape2 package to be installed in RStudio.
 
-## How-to run the script:
+## Using the script:
 
 run\_analysis.R defines the run\_analysis() function. This function **does not take** any arguements. It only assumes the presence of a zipped raw dataset in the same folder.
 
@@ -38,4 +38,4 @@ run_analysis()
 2. A folder called "working" is created in the existing directory. It contains:
     + A final tidy dataset titled tidy\_data.txt. Please refer Codebook.md for details regarding the tidy dataset.
     + A folder titled "UCI HAR Dataset" containing the unzipped raw dataset.
-
+3. The tidy data frame (named average\_values\_df in the script) is also returned by the function. 
