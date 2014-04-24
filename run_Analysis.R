@@ -51,7 +51,9 @@ run_Analysis <- function() {
     molten_mean_std_df <- melt(mean_std_df,id.vars=c("activity", "subject"))
     
     ## Cast the data set back computing the mean of the variables
-    average_df <- dcast(molten_mean_std_df,activity + subject ~ variable, mean)
+    average_values_df <- dcast(molten_mean_std_df,activity + subject ~ variable, mean)
+    
+    write.table(average_values_df, file="tidy_data.txt")
 }
 
 ## Function to create data frame
