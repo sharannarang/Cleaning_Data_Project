@@ -1,7 +1,7 @@
 run_analysis <- function() { 
     ## Save directory and zipped file names
     directory <- "working/UCI HAR Dataset"
-    fileName <- "working/getdata-projectfiles-UCI HAR Dataset.zip"
+    fileName <- "getdata-projectfiles-UCI HAR Dataset.zip"
     
     require(reshape2)
     
@@ -43,17 +43,23 @@ run_analysis <- function() {
     merge_df <- rbind(test_df,train_df)
     match_string <- "mean\\(\\)|std\\(\\)"
     
+    print("Merged Training and Test Data frames...")
+    
     ## Extract the mean and standard deviation from the merged data frame
     mean_std_df <- merge_df[grep(match_string, names(test_df))]
     mean_std_df <- cbind(merge_df[,c(1,2)], mean_std_df)
     
-    ## Melt the new data frame based on subject and 
+    print("Extracted mean and standard deviation values...")
+    
+    ## Melt the new data frame based on subject and activity
     molten_mean_std_df <- melt(mean_std_df,id.vars=c("activity", "subject"))
     
     ## Cast the data set back computing the mean of the variables
     average_values_df <- dcast(molten_mean_std_df,activity + subject ~ variable, mean)
     
+    print("Generated tidy data set with average values based on subject and activity...")
     write.table(average_values_df, file="working/tidy_data.txt")
+    invisible(average_values_df)
 }
 
 ## Function to create data frame
