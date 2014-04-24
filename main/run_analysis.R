@@ -1,14 +1,14 @@
-run_Analysis <- function() { 
+run_analysis <- function() { 
     ## Save directory and zipped file names
-    directory <- "UCI HAR Dataset"
-    fileName <- "getdata-projectfiles-UCI HAR Dataset.zip"
+    directory <- "working/UCI HAR Dataset"
+    fileName <- "working/getdata-projectfiles-UCI HAR Dataset.zip"
     
     require(reshape2)
     
     ## Check if files are unzipped already. if so, don't unzip them again
     if (!file.exists(paste(directory, "README.txt", sep="/"))) {
         print("Unzipped files don't Exist. Unzipping file..")
-        unzip(fileName)
+        unzip(fileName, exdir="working/")
     }
     else {
         print("Files exist..")
@@ -53,7 +53,7 @@ run_Analysis <- function() {
     ## Cast the data set back computing the mean of the variables
     average_values_df <- dcast(molten_mean_std_df,activity + subject ~ variable, mean)
     
-    write.table(average_values_df, file="tidy_data.txt")
+    write.table(average_values_df, file="working/tidy_data.txt")
 }
 
 ## Function to create data frame
