@@ -26,6 +26,7 @@ run\_analysis.R has the following requirements:
 
 run\_analysis.R defines the run\_analysis() function. This function **does not take** any arguements. It only assumes the presence of a zipped raw dataset in the same folder.
 
+The main/ directory must be set as the working directory in RStudio. The raw dataset must be present in the main/ directory as described in the requirements. 
 The script can be run by calling the function from the R console as follows:
 
 ```
@@ -35,7 +36,7 @@ run_analysis()
 ## Outputs produced by the script:
 
 1. The code produces several print statements to indicate the progress of the function.
-2. A folder called "working" is created in the existing directory. It contains:
+2. A folder called "working" is created in the main directory. It contains:
     + A final tidy dataset titled tidy\_data.txt. Please refer Codebook.md for details regarding the tidy dataset.
     + A folder titled "UCI HAR Dataset" containing the unzipped raw dataset.
 3. The tidy data frame (named average\_values\_df in the script) is also returned by the function. 

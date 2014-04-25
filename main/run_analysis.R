@@ -41,9 +41,10 @@ run_analysis <- function() {
     
     ## Merge the two datasets based on rows
     merge_df <- rbind(test_df,train_df)
-    match_string <- "mean\\(\\)|std\\(\\)"
     
     print("Merged Training and Test Data frames...")
+
+    match_string <- "mean\\(\\)|std\\(\\)"
     
     ## Extract the mean and standard deviation from the merged data frame
     mean_std_df <- merge_df[grep(match_string, names(test_df))]
