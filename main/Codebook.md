@@ -41,7 +41,7 @@ The function returns this new dataframe (df)
 
 ## Merging training and test datasets
 
-The raw data from test and training datasets are provided as inputs to the create\_data\_frame() function which creates two new dataframes test\_df and train\_df. These tidy dataframes are then merged (using rbind) to create a merged dataframe (merge\_df) containing the training and test data with descriptive column names and descriptive activity labels.
+The raw data from test and training datasets are provided as inputs to the create\_data\_frame() function which creates two new dataframes: test\_df and train\_df. These tidy dataframes are then merged (using rbind) to create a merged dataframe (merge\_df) containing the training and test data with descriptive column names and descriptive activity labels.
 
 ## Extracting the mean and standard deviation values
 
@@ -63,4 +63,4 @@ This molten dataframe is then past to the dcast function to compute the mean for
 
 The tidy dataframe (average\_values\_df) is written to a text file ("tidy\_data.txt") in the working directory. It is also returned by the function. 
 
-The tidy dataframe contains 180 observations of 68 columns. The first column is the activity column which is a factor of 6 activities. The second column is the subject column. The rest of the columns are mean() and std() estimates averaged per subject and activity. 
+The tidy dataframe contains 180 observations of 68 columns. The first column is the activity column which is a factor of 6 activities. The second column is the subject column. The rest of the columns are the averages of the mean and standard deviation estimates per subject and activity. 
