@@ -1,11 +1,11 @@
-# README for Getting and Cleaning Data - Coursera Class project
+# Getting and Cleaning Data - Coursera Class project
 
 ## Files and organization
 
 The project contains three files:
 
-+ run\_analysis.R: R code that performs cleans the data to generate a tidy data set.
-+ README.md: File to explain how-to-use the R code.
++ run\_analysis.R: R code that obtains the data and performs the necessary actions to generate a tidy data set.
++ README.md: File to explain how to use the R code.
 + Codebook.md: Explains the operations performed on the data and the various data frames that are created.
 
 The files are organized as follows:
@@ -37,6 +37,6 @@ run_analysis()
 
 1. The code produces several print statements to indicate the progress of the function.
 2. A folder called "working" is created in the main directory. It contains:
-    + A final tidy dataset titled tidy\_data.txt. Please refer Codebook.md for details regarding the tidy dataset.
+    + A final tidy dataset titled "tidy\_data.txt". Please refer Codebook.md for details regarding the tidy dataset.
     + A folder titled "UCI HAR Dataset" containing the unzipped raw dataset.
 3. The tidy data frame (named average\_values\_df in the script) is also returned by the function. 
